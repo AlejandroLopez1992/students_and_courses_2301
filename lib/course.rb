@@ -10,4 +10,8 @@ class Course
     return false if @students.length < @capacity
       true
   end
+
+  def enroll(student)
+    @students.push(student)
+  end
 end

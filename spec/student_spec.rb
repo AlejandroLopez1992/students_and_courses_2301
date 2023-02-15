@@ -16,4 +16,11 @@ RSpec.describe Student do
     student.log_score(78)    
     expect(student.scores).to eq([89, 78])
   end
+
+  it 'grade method can average the scores' do
+    student = Student.new({name: "Morgan", age: 21}) 
+    student.log_score(89)
+    student.log_score(78)    
+    expect(student.grade).to eq(83.5)
+  end
 end

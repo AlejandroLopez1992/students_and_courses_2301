@@ -31,9 +31,11 @@ RSpec.describe Gradebook do
     mars_physics.enroll(bender)
     interstellar_travel.enroll(amy_wong)
     interstellar_travel.enroll(bender)
+    gradebook.add_course(mars_physics)
+    gradebook.add_course(interstellar_travel)
     expect(mars_physics.students).to eq([amy_wong, bender])
     expect(interstellar_travel.students).to eq([amy_wong, bender])
-    expect(gradebook.list_all_students).to eq({mars_physics: [amy_wong, bender],
-                                               interstellar_travel: [amy_wong, bender]})
+    expect(gradebook.list_all_students).to eq({mars_physics.name => [amy_wong, bender],
+                                                interstellar_travel.name => [amy_wong, bender]})
   end
 end

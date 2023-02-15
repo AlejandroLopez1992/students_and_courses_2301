@@ -6,4 +6,6 @@ class Student
   @age = student_details[:age]
   @scores = []
   end
+
+  
 end

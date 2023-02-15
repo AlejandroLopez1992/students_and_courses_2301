@@ -38,4 +38,23 @@ RSpec.describe Gradebook do
     expect(gradebook.list_all_students).to eq({mars_physics.name => [amy_wong, bender],
                                                 interstellar_travel.name => [amy_wong, bender]})
   end
+
+  it 'can add method to see students under threshhold' do
+    gradebook = Gradebook.new("Farnsworth")
+    mars_physics = Course.new("Mars Physics", 10)
+    interstellar_travel = Course.new("Interstellar Travel", 5)
+    amy_wong = Student.new({name: "Amy Wong", age: 21}) 
+    bender = Student.new({name: "Bender", age: 22})
+    mars_physics.enroll(amy_wong)
+    mars_physics.enroll(bender)
+    interstellar_travel.enroll(amy_wong)
+    interstellar_travel.enroll(bender)
+    gradebook.add_course(mars_physics)
+    gradebook.add_course(interstellar_travel)
+    amy_wong.log_score(89)
+    amy_wong.log_score(100)
+    bender.log_score(100)
+    bender.log_score(20)
+    expect(gradebook.students_below(80)).to eq([bender])
+  end
 end

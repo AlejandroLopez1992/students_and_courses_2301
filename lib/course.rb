@@ -7,7 +7,7 @@ class Course
   end
 
   def full?
-    return false if @students.length <= @capacity
+    return false if @students.length < @capacity
       true
   end
 end

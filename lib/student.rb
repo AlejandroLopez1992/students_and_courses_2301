@@ -11,5 +11,7 @@ class Student
     @scores.push(score)
   end
 
-  
+  def grade
+    @scores.sum / @scores.length.to_f
+  end
 end
